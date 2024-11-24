@@ -4,7 +4,7 @@ import json
 
 
 def TestUploadFile():
-    filepath = 'uploads/test.mp4'
+    filepath = 'uploads/learn.mp4'
     files = {'video': (os.path.basename(filepath), open(filepath, 'rb'), 'video/mp4')}
     url = "http://127.0.0.1:5001/upload"
     headers = {
