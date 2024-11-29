@@ -1,20 +1,12 @@
-API Documentation for Video Editor Application
+# Video Editor API Client
 
-Base URL:
-All the following API endpoints are relative to the base URL:
-http://127.0.0.1:5001/
+## Overview
 
-1. Upload Video File
-Uploads a video file to the server.
+The **Video Editor API Client** is a Python client designed to interact with a local Video Editor API, enabling users to perform operations such as uploading video files, merging multiple videos, and accessing individual video information based on unique identifiers. 
 
-Endpoint:
-POST /upload
+## Features
 
-Request:
-Headers:
+- Upload video files to the server.
+- Merge multiple videos into a single file.
+- Retrieve information about specific videos using their unique IDs.
 
-Authorization: (required) Your authorization token (e.g., abc).
-Body:
-
-Multipart Form Data: The video file is sent as part of a form in the files section.
-Example:
