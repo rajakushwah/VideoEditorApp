@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: Video Editor API
+  description: API for uploading, merging, and retrieving videos.
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5001
+    description: Local development server
+
+paths:
+  /upload:
+    post:
+      summary: Upload a video file
+      operationId: uploadVideo
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Video uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Video uploaded successfully
+                  unique_id:
+                    type: string
+                    example: abc123
+        '400':
+          description: Error uploading video
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid file format
+
+  /merge:
+    post:
+      summary: Merge multiple videos
+      operationId: mergeVideos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filenames:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: Videos merged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Videos merged successfully
+                  output_file:
+                    type: string
+                    example: merged_video.mp4
+        '400':
+          description: Error merging videos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Invalid video filenames
+
+  /video/{unique_id}:
+    get:
+      summary: Access video information
+      operationId: getVideoInfo
+      parameters:
+        - name: unique_id
+          in: path
+          required: true
+          description: The unique ID of the video
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video information retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: Example Video Title
+                  duration:
+                    type: string
+                    example: 00:10:00
+                  resolution:
+                    type: string
+                    example: 1920x1080
+                  unique_id:
+                    type: string
+                    example: abc123
+        '404':
+          description: Video not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Video not found
