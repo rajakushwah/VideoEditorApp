@@ -105,6 +105,10 @@ This document provides an overview of the VideoEditorApp API endpoints, their us
 - 1. Replace placeholders like file1.mp4, file2.mp4, and unique_id with actual values from your application workflow.
 - 2. Ensure the API token (Authorization header) matches the configured value in your application for secure access.
 - 3. The merged video file will be saved in the server's directory and accessible via the video_url provided in the response.
+- 4. The default API token is configured at param can use 'abc' or  'xyz' **app.config['API_TOKENS'] = {'abc', 'xyz'}**
+- 5. configurable limits of size and duration
+    - maximum size: e.g. `5 mb`, `25 mb`
+    - minimum and maximum duration: e.g. `25 secs`, `5 secs`
 
 
 ### Running Tests
