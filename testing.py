@@ -4,7 +4,7 @@ import json
 
 
 def TestUploadFile():
-    filepath = 'uploads/raja.mp4'
+    filepath = '/Users/rajakushwah/Documents/VideoVerse Assignment/VideoEditorApp/uploads/new.mp4'
     files = {'video': (os.path.basename(filepath), open(filepath, 'rb'), 'video/mp4')}
     url = "http://127.0.0.1:5001/upload"
     headers = {
@@ -23,7 +23,7 @@ def TestMergeFile():
         'Content-Type': 'application/json'
     }
     payload_merge = {
-      "filenames": ["raja.mp4", "test.mp4"]
+      "filenames": ["new.mp4", "testt.mp4"]
     }
 
     response_merge = requests.post(url_merge, headers=headers_merge, data=json.dumps(payload_merge))
