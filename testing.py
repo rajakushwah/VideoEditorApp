@@ -30,8 +30,21 @@ def TestMergeFile():
     print(f"Merge response: {response_merge.text}")
     return response_merge.text
 
+
+def TestAccessVideo(unique_id):
+    url_video = f"http://127.0.0.1:5001/video/{unique_id}"
+    headers_video = {
+        'Authorization': 'abc',
+    }
+    response_video = requests.get(url_video, headers=headers_video)
+    print(f"Video access response: {response_video.text}")
+    return response_video.text
+
+
+
 # x=TestUploadFile()
-x=TestMergeFile()
+# x=TestMergeFile()
+x=TestAccessVideo("596c74b0-34bf-4028-b77d-0c3fc3d4ea7c")
 
 
 
