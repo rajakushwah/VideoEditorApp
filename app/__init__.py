@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, request, jsonify ,send_file
+from flask import Flask, request, jsonify ,send_file ,render_template_string
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import FileStorage
 import uuid , random
@@ -57,6 +57,24 @@ def allowed_file(filename):
 
 def authenticate(token):
     return token in app.config['API_TOKENS']
+
+@app.route('/')
+def home():
+    html_content = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video Editor API</title>
+    </head>
+    <body>
+        <h1>Video Editor API</h1>
+        <p>The Video Editor API Client is a Python client designed to interact with a local Video Editor API, enabling users to perform operations such as uploading video files, merging multiple videos, and accessing individual video information based on unique identifiers.</p>
+    </body>
+    </html>
+    """
+    return render_template_string(html_content)
 
 @app.route('/upload', methods=['POST'])
 def upload_video():
