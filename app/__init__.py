@@ -6,9 +6,11 @@ import uuid , random
 from datetime import datetime, timedelta
 import os
 from moviepy.editor import VideoFileClip , concatenate_videoclips
+# from flask_cors import CORS
 
 
 app = Flask(__name__)
+# CORS(app)
 
 # Configuration
 app.config['UPLOAD_FOLDER'] = 'uploads'
